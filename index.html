@@ -8,133 +8,118 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
 :root {
-  --gold: #f5c518;
-  --dark-gold: #b8860b;
-  --red: #cc2200;
-  --green: #33bb55;
-  --bg: #0a0a0f;
-  --panel: #111118;
-  --border: #2a2a44;
-  --text: #e8e8ff;
-  --shadow: #f5c51866;
+  --gold:#f5c518; --dark-gold:#b8860b; --red:#cc2200; --green:#33bb55;
+  --bg:#0a0a0f; --panel:#111118; --border:#2a2a44; --text:#e8e8ff; --shadow:#f5c51866;
 }
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{background:var(--bg);color:var(--text);font-family:'Press Start 2P',monospace;
+  height:100dvh;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;touch-action:none;user-select:none;}
 
-* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Press Start 2P', monospace;
-  height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  touch-action: none;
-  user-select: none;
-}
-
-.screen { display:none; width:100%; max-width:420px; flex-direction:column; align-items:center; padding:16px; }
-.screen.active { display:flex; }
+.screen{display:none;width:100%;max-width:420px;flex-direction:column;align-items:center;padding:16px;}
+.screen.active{display:flex;}
 
 /* HOME */
-.title-wrap { text-align:center; margin-bottom:28px; animation:popIn .5s cubic-bezier(.17,.67,.35,1.4) both; }
-@keyframes popIn { from{transform:scale(.5);opacity:0} to{transform:scale(1);opacity:1} }
-.title-eyebrow { font-size:9px; color:var(--gold); letter-spacing:5px; margin-bottom:6px; }
-.title-main { font-size:clamp(28px,9vw,44px); color:#fff; line-height:1.1;
-  text-shadow: 0 0 12px var(--gold), 4px 4px 0 var(--dark-gold); }
-.title-sub { font-family:'VT323',monospace; font-size:20px; color:#666688; margin-top:6px; letter-spacing:3px; }
-.float-icon { font-size:52px; display:block; text-align:center; margin:0 auto 24px;
-  animation:floatY 2s ease-in-out infinite; filter:drop-shadow(0 0 14px var(--gold)); }
-@keyframes floatY { 0%,100%{transform:translateY(0) rotate(-15deg)} 50%{transform:translateY(-8px) rotate(-15deg)} }
+.title-wrap{text-align:center;margin-bottom:24px;animation:popIn .5s cubic-bezier(.17,.67,.35,1.4) both;}
+@keyframes popIn{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
+.title-eyebrow{font-size:9px;color:var(--gold);letter-spacing:5px;margin-bottom:6px;}
+.title-main{font-size:clamp(28px,9vw,44px);color:#fff;line-height:1.1;
+  text-shadow:0 0 12px var(--gold),4px 4px 0 var(--dark-gold);}
+.title-sub{font-family:'VT323',monospace;font-size:20px;color:#666688;margin-top:6px;letter-spacing:3px;}
+.float-icon{font-size:52px;display:block;text-align:center;margin:0 auto 20px;
+  animation:floatY 2s ease-in-out infinite;filter:drop-shadow(0 0 14px var(--gold));}
+@keyframes floatY{0%,100%{transform:translateY(0) rotate(-15deg)}50%{transform:translateY(-8px) rotate(-15deg)}}
 
-.menu { display:flex; flex-direction:column; gap:10px; width:100%; max-width:280px; }
-.btn {
-  font-family:'Press Start 2P',monospace; font-size:9px; padding:13px 18px;
-  border:2px solid var(--border); background:var(--panel); color:var(--text);
-  cursor:pointer; text-align:center; transition:all .1s;
-}
-.btn:hover,.btn:active { border-color:var(--gold); color:var(--gold); background:#181828;
-  box-shadow:0 0 14px var(--shadow); transform:translateX(3px); }
-.btn.primary { border-color:var(--gold); color:var(--gold); }
-.btn.danger { border-color:var(--red); color:var(--red); }
-.btn.danger:hover { color:#ff4422; border-color:#ff4422; box-shadow:0 0 14px #cc220066; }
+.menu{display:flex;flex-direction:column;gap:10px;width:100%;max-width:280px;}
+.btn{font-family:'Press Start 2P',monospace;font-size:9px;padding:13px 18px;
+  border:2px solid var(--border);background:var(--panel);color:var(--text);
+  cursor:pointer;text-align:center;transition:all .1s;}
+.btn:hover,.btn:active{border-color:var(--gold);color:var(--gold);background:#181828;
+  box-shadow:0 0 14px var(--shadow);transform:translateX(3px);}
+.btn.primary{border-color:var(--gold);color:var(--gold);}
+.btn.danger{border-color:var(--red);color:var(--red);}
+.btn.danger:hover{color:#ff4422;border-color:#ff4422;box-shadow:0 0 14px #cc220066;}
 
 /* OPTIONS */
-.pixel-box { border:3px solid var(--border); padding:20px; width:100%; box-shadow:4px 4px 0 #000; }
-.opt-title { font-size:14px; color:var(--gold); text-align:center; margin-bottom:20px; }
-.ctrl-section { margin-bottom:16px; }
-.ctrl-label { font-family:'VT323',monospace; font-size:20px; color:#666688;
-  letter-spacing:2px; border-bottom:1px solid var(--border); padding-bottom:4px; margin-bottom:8px; }
-.ctrl-row { display:flex; justify-content:space-between; padding:6px 0;
-  border-bottom:1px solid #151520; font-size:7px; gap:8px; }
-.ctrl-key { background:#181828; border:1px solid var(--border); padding:3px 7px; color:var(--gold); font-size:7px; white-space:nowrap; }
+.pixel-box{border:3px solid var(--border);padding:20px;width:100%;box-shadow:4px 4px 0 #000;}
+.opt-title{font-size:14px;color:var(--gold);text-align:center;margin-bottom:20px;}
+.ctrl-section{margin-bottom:14px;}
+.ctrl-label{font-family:'VT323',monospace;font-size:20px;color:#666688;
+  letter-spacing:2px;border-bottom:1px solid var(--border);padding-bottom:4px;margin-bottom:8px;}
+.ctrl-row{display:flex;justify-content:space-between;padding:5px 0;
+  border-bottom:1px solid #151520;font-size:7px;gap:8px;}
+.ctrl-key{background:#181828;border:1px solid var(--border);padding:3px 7px;color:var(--gold);font-size:7px;white-space:nowrap;}
 
 /* GAME SCREEN */
-#screen-game { gap:8px; padding:8px; }
+#screen-game{gap:7px;padding:8px;}
 
-.hud { display:flex; gap:10px; width:100%; align-items:flex-start; }
-.hud-block { flex:1; }
-.hud-label { font-size:6px; color:#666688; margin-bottom:3px; }
-.hp-bar { height:12px; background:#0d0d14; border:1px solid var(--border); overflow:hidden; }
-.hp-fill { height:100%; transition:width .25s; position:relative; }
-.hp-fill::after { content:''; position:absolute; top:1px; left:3px; right:3px; height:2px; background:rgba(255,255,255,.25); }
-.hp-fill.p { background:var(--green); }
-.hp-fill.e { background:var(--red); }
-.hud-val { font-size:5px; color:#666688; margin-top:2px; }
+.hud{display:flex;gap:8px;width:100%;align-items:flex-start;}
+.hud-block{flex:1;}
+.hud-label{font-size:6px;color:#666688;margin-bottom:3px;}
+.hp-bar{height:11px;background:#0d0d14;border:1px solid var(--border);overflow:hidden;}
+.hp-fill{height:100%;transition:width .25s;position:relative;}
+.hp-fill::after{content:'';position:absolute;top:1px;left:3px;right:3px;height:2px;background:rgba(255,255,255,.25);}
+.hp-fill.p{background:var(--green);}
+.hp-fill.e{background:var(--red);}
+.hud-val{font-size:5px;color:#666688;margin-top:2px;}
+/* Shield icon in HUD */
+.hud-shield{display:none;flex-shrink:0;align-items:center;justify-content:center;
+  font-size:20px;padding:0 4px;filter:drop-shadow(0 0 6px #4488ff);}
+.hud-shield.visible{display:flex;}
 
-.canvas-wrap { width:100%; position:relative; }
-#gameCanvas { width:100%; aspect-ratio:1; display:block; border:3px solid var(--border);
-  box-shadow:0 0 24px #0008, inset 0 0 40px #0006; image-rendering:pixelated; }
+.canvas-wrap{width:100%;position:relative;}
+#gameCanvas{width:100%;aspect-ratio:1;display:block;border:3px solid var(--border);
+  box-shadow:0 0 24px #0008,inset 0 0 40px #0006;image-rendering:pixelated;}
 
-.log { width:100%; background:var(--panel); border:2px solid var(--border);
-  padding:8px; font-family:'VT323',monospace; font-size:clamp(14px,4vw,17px);
-  color:#ccccee; min-height:44px; max-height:66px; overflow-y:auto; line-height:1.5; }
-.log-p { color:var(--green); }
-.log-e { color:#ff6644; }
-.log-s { color:var(--gold); }
+/* Stage banner */
+.stage-banner{font-size:7px;color:#666688;text-align:center;letter-spacing:2px;
+  width:100%;padding:2px 0;}
+
+.log{width:100%;background:var(--panel);border:2px solid var(--border);
+  padding:7px;font-family:'VT323',monospace;font-size:clamp(13px,3.8vw,16px);
+  color:#ccccee;min-height:40px;max-height:60px;overflow-y:auto;line-height:1.5;}
+.log-p{color:var(--green);}
+.log-e{color:#ff6644;}
+.log-s{color:var(--gold);}
+.log-item{color:#88aaff;}
 
 /* CONTROLS */
-.ctrl-row-game { display:flex; width:100%; align-items:center; justify-content:space-between; padding:0 8px; }
+.ctrl-row-game{display:flex;width:100%;align-items:center;justify-content:space-between;padding:0 6px;}
 
-.stick-zone { width:110px; height:110px; border-radius:50%;
-  background:radial-gradient(circle, #181828 60%, #111118);
-  border:2px solid var(--border); position:relative; flex-shrink:0; touch-action:none;
-  box-shadow:inset 0 2px 8px #0008; }
-.stick-knob { width:44px; height:44px; border-radius:50%;
+.stick-zone{width:108px;height:108px;border-radius:50%;
+  background:radial-gradient(circle,#181828 60%,#111118);
+  border:2px solid var(--border);position:relative;flex-shrink:0;touch-action:none;
+  box-shadow:inset 0 2px 8px #0008;}
+.stick-knob{width:42px;height:42px;border-radius:50%;
   background:linear-gradient(145deg,#2a2a44,#1a1a2e);
-  border:2px solid #3a3a5a;
-  position:absolute; top:50%; left:50%;
-  transform:translate(-50%,-50%);
-  pointer-events:none;
-  box-shadow:0 3px 8px #0008, inset 0 1px 2px #ffffff22; }
+  border:2px solid #3a3a5a;position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);pointer-events:none;
+  box-shadow:0 3px 8px #0008,inset 0 1px 2px #ffffff22;}
 
-.attack-btn { width:88px; height:88px; border-radius:50%;
-  background:radial-gradient(circle at 35% 35%, #2a2020, #0d0d14);
-  border:3px solid var(--gold); color:var(--gold); font-size:26px;
-  cursor:pointer; display:flex; align-items:center; justify-content:center;
-  flex-shrink:0; touch-action:none;
-  box-shadow:0 0 18px var(--shadow), inset 0 0 14px #0006;
-  transition:all .08s; }
-.attack-btn:active, .attack-btn.pressed {
-  background:radial-gradient(circle at 35% 35%, #3a2020, #1a0d0d);
-  box-shadow:0 0 30px var(--gold), inset 0 0 10px #0008;
-  transform:scale(.92); }
+.attack-btn{width:86px;height:86px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#2a2020,#0d0d14);
+  border:3px solid var(--gold);color:var(--gold);font-size:25px;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;touch-action:none;
+  box-shadow:0 0 18px var(--shadow),inset 0 0 14px #0006;transition:all .08s;}
+.attack-btn:active,.attack-btn.pressed{
+  background:radial-gradient(circle at 35% 35%,#3a2020,#1a0d0d);
+  box-shadow:0 0 30px var(--gold),inset 0 0 10px #0008;transform:scale(.92);}
 
 /* END SCREENS */
-#screen-victory, #screen-death { gap:20px; text-align:center; }
-.v-icon { font-size:72px; display:block; animation:floatY 2s ease-in-out infinite; }
-.v-title { font-size:clamp(14px,5vw,20px); color:var(--gold);
-  text-shadow:0 0 20px var(--shadow),4px 4px 0 var(--dark-gold); animation:glow 1.5s ease-in-out infinite; }
-.d-title { font-size:clamp(14px,5vw,20px); color:var(--red);
-  text-shadow:0 0 20px #cc220088,4px 4px 0 #660000; animation:glow-r 1.5s ease-in-out infinite; }
-@keyframes glow   { 0%,100%{text-shadow:0 0 20px var(--shadow),4px 4px 0 var(--dark-gold)} 50%{text-shadow:0 0 40px #f5c518,4px 4px 0 var(--dark-gold)} }
-@keyframes glow-r { 0%,100%{text-shadow:0 0 20px #cc220088,4px 4px 0 #660000} 50%{text-shadow:0 0 40px #cc2200cc,4px 4px 0 #660000} }
-.end-msg { font-family:'VT323',monospace; font-size:22px; color:#aaaacc; line-height:1.6; }
-.end-btns { display:flex; flex-direction:column; gap:10px; width:100%; max-width:260px; }
+#screen-victory,#screen-death{gap:20px;text-align:center;}
+.v-icon{font-size:72px;display:block;animation:floatY 2s ease-in-out infinite;}
+.v-title{font-size:clamp(14px,5vw,20px);color:var(--gold);
+  text-shadow:0 0 20px var(--shadow),4px 4px 0 var(--dark-gold);animation:glow 1.5s ease-in-out infinite;}
+.d-title{font-size:clamp(14px,5vw,20px);color:var(--red);
+  text-shadow:0 0 20px #cc220088,4px 4px 0 #660000;animation:glow-r 1.5s ease-in-out infinite;}
+@keyframes glow{0%,100%{text-shadow:0 0 20px var(--shadow),4px 4px 0 var(--dark-gold)}50%{text-shadow:0 0 40px #f5c518,4px 4px 0 var(--dark-gold)}}
+@keyframes glow-r{0%,100%{text-shadow:0 0 20px #cc220088,4px 4px 0 #660000}50%{text-shadow:0 0 40px #cc2200cc,4px 4px 0 #660000}}
+.end-msg{font-family:'VT323',monospace;font-size:22px;color:#aaaacc;line-height:1.6;}
+.end-btns{display:flex;flex-direction:column;gap:10px;width:100%;max-width:260px;}
 
-::-webkit-scrollbar { width:3px; }
-::-webkit-scrollbar-thumb { background:var(--border); }
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-thumb{background:var(--border);}
 </style>
 </head>
 <body>
@@ -144,7 +129,7 @@ body {
   <div class="title-wrap">
     <div class="title-eyebrow">⚔ A Hero Rises ⚔</div>
     <div class="title-main">BLADE<br>QUEST</div>
-    <div class="title-sub">Stage 1 · The Dragon</div>
+    <div class="title-sub">Dungeon Edition</div>
   </div>
   <span class="float-icon">🗡️</span>
   <div class="menu">
@@ -163,14 +148,17 @@ body {
       <div class="ctrl-row"><span>Attack</span><span class="ctrl-key">SPACE / Z</span></div>
     </div>
     <div class="ctrl-section">
-      <div class="ctrl-label">📱 MOBILE CONTROLS</div>
-      <div class="ctrl-row"><span>Move</span><span class="ctrl-key">Left Analog Stick</span></div>
+      <div class="ctrl-label">📱 MOBILE</div>
+      <div class="ctrl-row"><span>Move</span><span class="ctrl-key">Left Analog</span></div>
       <div class="ctrl-row"><span>Attack</span><span class="ctrl-key">Right ⚔ Button</span></div>
     </div>
-    <div style="font-family:'VT323',monospace;font-size:15px;color:#444466;text-align:center;margin-top:10px;line-height:1.7;">
-      Face a direction then swing your sword.<br>
-      Sword swings in the direction you're moving.<br>
-      Dodge the dragon's fireballs!
+    <div class="ctrl-section">
+      <div class="ctrl-label">🛡 SHIELD TIP</div>
+      <div style="font-family:'VT323',monospace;font-size:15px;color:#4488ff;line-height:1.7;padding-top:4px;">
+        The shield blocks projectiles<br>
+        hitting your FRONT side.<br>
+        Face the danger to block it!
+      </div>
     </div>
   </div>
   <div style="margin-top:16px;width:100%;max-width:260px;">
@@ -186,8 +174,9 @@ body {
       <div class="hp-bar"><div class="hp-fill p" id="php"></div></div>
       <div class="hud-val" id="php-txt">10 / 10</div>
     </div>
+    <div class="hud-shield" id="hud-shield">🛡</div>
     <div class="hud-block">
-      <div class="hud-label">🐉 DRAGON</div>
+      <div class="hud-label" id="enemy-hud-label">🐉 DRAGON</div>
       <div class="hp-bar"><div class="hp-fill e" id="ehp"></div></div>
       <div class="hud-val" id="ehp-txt">15 / 15</div>
     </div>
@@ -197,6 +186,7 @@ body {
     <canvas id="gameCanvas" width="360" height="360"></canvas>
   </div>
 
+  <div class="stage-banner" id="stage-banner">STAGE 1 — THE DRAGON'S LAIR</div>
   <div class="log" id="log"></div>
 
   <div class="ctrl-row-game">
@@ -210,8 +200,8 @@ body {
 <!-- VICTORY -->
 <div id="screen-victory" class="screen">
   <span class="v-icon">🏆</span>
-  <div class="v-title">STAGE CLEAR!</div>
-  <div class="end-msg" id="v-msg">The dragon is slain!</div>
+  <div class="v-title">DUNGEON CLEARED!</div>
+  <div class="end-msg" id="v-msg">You conquered the dungeon!</div>
   <div class="end-btns">
     <button class="btn primary" onclick="startGame()">▶ PLAY AGAIN</button>
     <button class="btn" onclick="showScreen('screen-home')">🏠 HOME</button>
@@ -222,7 +212,7 @@ body {
 <div id="screen-death" class="screen">
   <span class="v-icon" style="filter:drop-shadow(0 0 12px #cc2200)">💀</span>
   <div class="d-title">YOU DIED</div>
-  <div class="end-msg">The dragon's fire<br>consumed you.</div>
+  <div class="end-msg" id="d-msg">The dungeon claims another soul.</div>
   <div class="end-btns">
     <button class="btn danger" onclick="startGame()">▶ TRY AGAIN</button>
     <button class="btn" onclick="showScreen('screen-home')">🏠 HOME</button>
@@ -230,83 +220,164 @@ body {
 </div>
 
 <script>
-// ══════════════════════════════════════════════════
+// ══════════════════════════════════════
 // SCREEN
-// ══════════════════════════════════════════════════
+// ══════════════════════════════════════
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
 
-// ══════════════════════════════════════════════════
+// ══════════════════════════════════════
 // CANVAS
-// ══════════════════════════════════════════════════
+// ══════════════════════════════════════
 const canvas = document.getElementById('gameCanvas');
 const ctx    = canvas.getContext('2d');
 const W = 360, H = 360;
 
-// ══════════════════════════════════════════════════
+// ══════════════════════════════════════
 // CONSTANTS
-// ══════════════════════════════════════════════════
+// ══════════════════════════════════════
 const TILE = 40, COLS = 9, ROWS = 9;
-const PL_SPEED   = 2.4;
-const EN_SPEED   = 1.1;
-const PL_HP_MAX  = 10;
-const EN_HP_MAX  = 15;
-const SWORD_LEN  = 46;
-const SWORD_CD   = 480;   // ms
-const EN_ATK_CD  = 1500;
-const PROJ_SPEED = 2.6;
-const EN_IFRAMES = 18;    // frames where enemy can't be hit again immediately
+const PL_SPEED  = 2.4;
+const PL_HP_MAX = 10;
+const SWORD_LEN = 46;
+const SWORD_CD  = 480;
 
-// Room grid: 1=wall, 0=floor
-const ROOM = Array.from({length:ROWS}, (_, r) =>
-  Array.from({length:COLS}, (__, c) =>
-    (r===0||r===ROWS-1||c===0||c===COLS-1) ? 1 : 0
-  )
-);
+// Door tile column span (center 3 tiles of north wall)
+const DOOR_COLS = [3, 4, 5]; // tiles 3,4,5 in row 0
 
-// ══════════════════════════════════════════════════
+// Stage configs
+const STAGES = [
+  {
+    name: "STAGE 1 — THE DRAGON'S LAIR",
+    enemyLabel: '🐉 DRAGON',
+    intro: ['A dragon blocks the path!', 'Move to aim — then ⚔ to attack!'],
+    enemy: {
+      x: W/2, y: TILE*1.8, r: 17, hpMax: 15,
+      speed: 1.1, atkCd: 99999, projSpeed: 0, projR: 0,  // no shooting
+      dirTimer: 0, moveAngle: Math.PI/2,
+      color1:'#771100', color2:'#aa2200', glowColor:'#cc220022',
+      eyeColor:'#ffee00', eyePupil:'#220000',
+      type: 'dragon',
+      shoots: false,
+      drops: null,   // no shield drop
+    }
+  },
+  {
+    name: "STAGE 2 — THE DRAGON AWAKENS",
+    enemyLabel: '🐉 DRAGON',
+    intro: ['The dragon breathes fire now!', 'Pick up the shield — then push north!'],
+    enemy: {
+      x: W/2, y: TILE*1.8, r: 17, hpMax: 18,
+      speed: 1.3, atkCd: 1500, projSpeed: 2.6, projR: 8,
+      dirTimer: 0, moveAngle: Math.PI/2,
+      color1:'#771100', color2:'#aa2200', glowColor:'#cc220022',
+      eyeColor:'#ffee00', eyePupil:'#220000',
+      type: 'dragon',
+      shoots: true,
+      drops: 'shield',
+    }
+  },
+  {
+    name: "STAGE 3 — THE SKELETON ARCHER",
+    enemyLabel: '💀 SKELETON',
+    intro: ['A skeleton archer takes aim!', 'Use your shield to block arrows!'],
+    enemy: {
+      x: W/2, y: TILE*2, r: 14, hpMax: 12,
+      speed: 0.8, atkCd: 1100, projSpeed: 3.4, projR: 6,
+      dirTimer: 0, moveAngle: Math.PI/2,
+      color1:'#ccccaa', color2:'#eeeedd', glowColor:'#aaaaaa22',
+      eyeColor:'#ff2200', eyePupil:'#000000',
+      type: 'skeleton',
+      shoots: true,
+      drops: null,
+    }
+  }
+];
+
+// ══════════════════════════════════════
+// ROOM GRID  (1=wall, 0=floor)
+// ══════════════════════════════════════
+function buildRoom(doorOpen) {
+  const grid = Array.from({length:ROWS}, (_, r) =>
+    Array.from({length:COLS}, (__, c) =>
+      (r===0||r===ROWS-1||c===0||c===COLS-1) ? 1 : 0
+    )
+  );
+  if (doorOpen) {
+    // Open north wall center 3 tiles
+    DOOR_COLS.forEach(c => { grid[0][c] = 0; });
+  }
+  return grid;
+}
+
+// ══════════════════════════════════════
 // STATE
-// ══════════════════════════════════════════════════
-let player, enemy, projectiles, floatTexts, rafId;
+// ══════════════════════════════════════
+let player, enemy, projectiles, floatTexts, drops, rafId;
 let keys      = {};
-let analog    = { x:0, y:0 };
+let analog    = {x:0,y:0};
 let lastSword = 0;
 let gameOver  = false;
+let stageIdx  = 0;
+let room      = [];
+let transitioning = false;
 
-function initGame() {
+function initStage(idx) {
+  stageIdx = idx;
+  const cfg   = STAGES[idx];
+  const ecfg  = cfg.enemy;
+  room = buildRoom(false);
+
   player = {
-    x: W/2, y: H - TILE*1.5,
-    facing: -Math.PI/2,   // up by default
-    hp: PL_HP_MAX,
+    x: W/2,
+    y: idx === 0 ? H - TILE*1.5 : H - TILE*2,  // enter from south each room
+    facing: -Math.PI/2,
+    hp: player ? player.hp : PL_HP_MAX,   // carry HP across rooms
+    hasShield: player ? player.hasShield : false,
     r: 13,
     iframes: 0,
     swinging: false,
-    swingT: 0,           // 0..1
+    swingT: 0,
   };
+
   enemy = {
-    x: W/2, y: TILE*1.8,
+    ...ecfg,
+    hp: ecfg.hpMax,
     facing: Math.PI/2,
-    hp: EN_HP_MAX,
-    r: 17,
-    moveAngle: Math.PI/2,
-    dirTimer: 0,
-    atkTimer: 0,
     iframes: 0,
+    atkTimer: ecfg.atkCd,
   };
+
   projectiles = [];
   floatTexts  = [];
+  drops       = [];
   gameOver    = false;
   lastSword   = 0;
+  transitioning = false;
+
+  // HUD labels
+  document.getElementById('enemy-hud-label').textContent = cfg.enemyLabel;
+  document.getElementById('stage-banner').textContent    = cfg.name;
+  updateHUD();
   clearLog();
-  log('A dragon guards the dungeon!', 's');
-  log('Move to aim your sword, then ⚔ ATTACK!', 's');
+
+  cfg.intro.forEach(msg => log(msg, 's'));
 }
 
-// ══════════════════════════════════════════════════
+function startGame() {
+  showScreen('screen-game');
+  stopLoop();
+  player = null;
+  initStage(0);
+  lastTs = performance.now();
+  rafId  = requestAnimationFrame(loop);
+}
+
+// ══════════════════════════════════════
 // LOG
-// ══════════════════════════════════════════════════
+// ══════════════════════════════════════
 function clearLog() { document.getElementById('log').innerHTML = ''; }
 function log(msg, cls) {
   const el = document.getElementById('log');
@@ -317,447 +388,619 @@ function log(msg, cls) {
   el.scrollTop = el.scrollHeight;
 }
 
-// ══════════════════════════════════════════════════
+// ══════════════════════════════════════
 // HUD
-// ══════════════════════════════════════════════════
+// ══════════════════════════════════════
 function updateHUD() {
   const pp = Math.max(0, player.hp / PL_HP_MAX * 100);
-  const ep = Math.max(0, enemy.hp  / EN_HP_MAX * 100);
+  const ep = Math.max(0, enemy.hp  / enemy.hpMax * 100);
   document.getElementById('php').style.width = pp + '%';
   document.getElementById('ehp').style.width = ep + '%';
   document.getElementById('php-txt').textContent = `${Math.max(0,player.hp)} / ${PL_HP_MAX}`;
-  document.getElementById('ehp-txt').textContent = `${Math.max(0,enemy.hp)} / ${EN_HP_MAX}`;
+  document.getElementById('ehp-txt').textContent = `${Math.max(0,enemy.hp)} / ${enemy.hpMax}`;
+  const shieldEl = document.getElementById('hud-shield');
+  if (player.hasShield) shieldEl.classList.add('visible');
+  else shieldEl.classList.remove('visible');
 }
 
-// ══════════════════════════════════════════════════
-// PHYSICS HELPERS
-// ══════════════════════════════════════════════════
+// ══════════════════════════════════════
+// COLLISION
+// ══════════════════════════════════════
 function isWall(wx, wy) {
-  const c = Math.floor(wx / TILE), r = Math.floor(wy / TILE);
+  const c = Math.floor(wx/TILE), r = Math.floor(wy/TILE);
   if (c<0||c>=COLS||r<0||r>=ROWS) return true;
-  return ROOM[r][c] === 1;
+  return room[r][c] === 1;
 }
 
 function slideMove(e, dx, dy) {
   const rad = e.r;
-  // Try X
   const nx = e.x + dx;
-  const cornersX = [[nx-rad,e.y-rad],[nx+rad,e.y-rad],[nx-rad,e.y+rad],[nx+rad,e.y+rad]];
-  if (cornersX.every(([px,py]) => !isWall(px, py))) e.x = nx;
-  // Try Y
+  if ([[nx-rad,e.y-rad],[nx+rad,e.y-rad],[nx-rad,e.y+rad],[nx+rad,e.y+rad]]
+      .every(([px,py]) => !isWall(px,py))) e.x = nx;
   const ny = e.y + dy;
-  const cornersY = [[e.x-rad,ny-rad],[e.x+rad,ny-rad],[e.x-rad,ny+rad],[e.x+rad,ny+rad]];
-  if (cornersY.every(([px,py]) => !isWall(px, py))) e.y = ny;
+  if ([[e.x-rad,ny-rad],[e.x+rad,ny-rad],[e.x-rad,ny+rad],[e.x+rad,ny+rad]]
+      .every(([px,py]) => !isWall(px,py))) e.y = ny;
 }
 
-function circlesOverlap(a, b) {
-  return Math.hypot(a.x-b.x, a.y-b.y) < a.r + b.r;
-}
-
-// ══════════════════════════════════════════════════
+// ══════════════════════════════════════
 // FLOAT TEXT
-// ══════════════════════════════════════════════════
+// ══════════════════════════════════════
 function spawnText(x, y, text, color) {
-  floatTexts.push({ x, y, text, color, life:1.0 });
+  floatTexts.push({x, y, text, color, life:1.0});
 }
 
-// ══════════════════════════════════════════════════
+// ══════════════════════════════════════
+// SHIELD BLOCK CHECK
+// projectile angle vs player facing:
+// if dot product > 0.3 => hitting front
+// ══════════════════════════════════════
+function isBlockedByShield(proj) {
+  if (!player.hasShield) return false;
+  // Vector from player to projectile
+  const dx = proj.x - player.x, dy = proj.y - player.y;
+  const dist = Math.hypot(dx, dy);
+  if (dist === 0) return false;
+  // Facing direction dot projectile approach direction
+  const facingX = Math.cos(player.facing), facingY = Math.sin(player.facing);
+  // Projectile travels in vx/vy direction, approach = -proj.v
+  const approachX = -proj.vx / Math.hypot(proj.vx, proj.vy);
+  const approachY = -proj.vy / Math.hypot(proj.vx, proj.vy);
+  const dot = facingX * approachX + facingY * approachY;
+  // Also check that projectile is roughly in front of player
+  const inFront = (facingX * dx + facingY * dy) > -5;
+  return dot > 0.35 && inFront;
+}
+
+// ══════════════════════════════════════
 // ATTACK
-// ══════════════════════════════════════════════════
+// ══════════════════════════════════════
 function doAttack() {
-  if (gameOver) return;
+  if (gameOver || transitioning) return;
   const now = performance.now();
   if (now - lastSword < SWORD_CD) return;
   lastSword = now;
   player.swinging = true;
   player.swingT   = 0;
 
-  // Hit detection: sweep arc in front of player
-  if (enemy.iframes <= 0) {
+  if (enemy.iframes <= 0 && enemy.hp > 0) {
     const tipX = player.x + Math.cos(player.facing) * (player.r + SWORD_LEN);
     const tipY = player.y + Math.sin(player.facing) * (player.r + SWORD_LEN);
-    const midX = player.x + Math.cos(player.facing) * (player.r + SWORD_LEN * 0.5);
-    const midY = player.y + Math.sin(player.facing) * (player.r + SWORD_LEN * 0.5);
+    const midX = player.x + Math.cos(player.facing) * (player.r + SWORD_LEN*0.5);
+    const midY = player.y + Math.sin(player.facing) * (player.r + SWORD_LEN*0.5);
 
-    const hitTip = Math.hypot(tipX - enemy.x, tipY - enemy.y) < enemy.r + 6;
-    const hitMid = Math.hypot(midX - enemy.x, midY - enemy.y) < enemy.r + 10;
-
-    if (hitTip || hitMid) {
-      const dmg = 2 + Math.floor(Math.random() * 3);
+    const hit = Math.hypot(tipX-enemy.x, tipY-enemy.y) < enemy.r+6
+             || Math.hypot(midX-enemy.x, midY-enemy.y) < enemy.r+10;
+    if (hit) {
+      const dmg = 2 + Math.floor(Math.random()*3);
       enemy.hp    -= dmg;
-      enemy.iframes = EN_IFRAMES;
-      spawnText(enemy.x + (Math.random()*16-8), enemy.y - 22, `-${dmg} SLASH`, '#88ffaa');
+      enemy.iframes = 18;
+      spawnText(enemy.x + (Math.random()*16-8), enemy.y-22, `-${dmg} SLASH`, '#88ffaa');
       log(`You slash! ${dmg} SLASH damage`, 'p');
       updateHUD();
-      if (enemy.hp <= 0 && !gameOver) { gameOver = true; setTimeout(victory, 350); }
+      if (enemy.hp <= 0) {
+        enemy.hp = 0;
+        setTimeout(() => onEnemyDeath(), 350);
+      }
     }
   }
 }
 
-// ══════════════════════════════════════════════════
-// ENEMY AI
-// ══════════════════════════════════════════════════
-function updateEnemy(dt) {
-  if (gameOver) return;
-  if (enemy.iframes > 0) enemy.iframes--;
-
-  const dx = player.x - enemy.x;
-  const dy = player.y - enemy.y;
-  const dist = Math.hypot(dx, dy);
-
-  // Direction change
-  enemy.dirTimer -= dt;
-  if (enemy.dirTimer <= 0) {
-    const chase = Math.random() < 0.65;
-    enemy.moveAngle = chase
-      ? Math.atan2(dy, dx)
-      : enemy.moveAngle + (Math.random() - 0.5) * 2.0;
-    enemy.dirTimer = 500 + Math.random() * 900;
-  }
-
-  enemy.facing = enemy.moveAngle;
-  slideMove(enemy, Math.cos(enemy.moveAngle) * EN_SPEED, Math.sin(enemy.moveAngle) * EN_SPEED);
-
-  // Fire attack
-  enemy.atkTimer -= dt;
-  if (enemy.atkTimer <= 0 && dist < TILE * 5.5) {
-    enemy.atkTimer = EN_ATK_CD + Math.random() * 400;
-    const angle = Math.atan2(dy, dx) + (Math.random()-0.5) * 0.35;
-    projectiles.push({
-      x: enemy.x + Math.cos(angle) * (enemy.r + 4),
-      y: enemy.y + Math.sin(angle) * (enemy.r + 4),
-      vx: Math.cos(angle) * PROJ_SPEED,
-      vy: Math.sin(angle) * PROJ_SPEED,
-      life: 1.0, r: 8,
-    });
-    log('Dragon breathes fire! 🔥', 'e');
+// ══════════════════════════════════════
+// ENEMY DEATH → DROP LOOT
+// ══════════════════════════════════════
+function onEnemyDeath() {
+  const cfg = STAGES[stageIdx];
+  if (cfg.enemy.drops === 'shield') {
+    drops.push({ x: enemy.x, y: enemy.y, type:'shield', pulse:0 });
+    log('The dragon dropped a SHIELD! 🛡', 'item');
+    log('Walk over it to pick it up!', 's');
+  } else if (stageIdx < STAGES.length - 1) {
+    // Not the last stage — just open the door, no drop
+    log('The enemy falls! A passage opens to the NORTH! ⬆', 's');
+    openNorthDoor();
+  } else {
+    // Final stage — victory
+    const killerName = cfg.enemy.type === 'dragon' ? 'dragon' : 'skeleton';
+    gameOver = true;
+    stopLoop();
+    document.getElementById('v-msg').innerHTML =
+      `${killerName.charAt(0).toUpperCase()+killerName.slice(1)} slain!<br>HP remaining: ${Math.max(0,player.hp)} / ${PL_HP_MAX}`;
+    showScreen('screen-victory');
   }
 }
 
-// ══════════════════════════════════════════════════
+// ══════════════════════════════════════
+// DOOR / ROOM TRANSITION
+// ══════════════════════════════════════
+function openNorthDoor() {
+  room = buildRoom(true);  // open door
+  log('A passage opens to the NORTH! ⬆', 's');
+}
+
+function checkDoorTransition() {
+  // Player walks into top row through open door tiles
+  if (player.y < TILE * 0.5) {
+    if (stageIdx < STAGES.length - 1) {
+      transitioning = true;
+      log('You move north...', 's');
+      setTimeout(() => {
+        stopLoop();
+        initStage(stageIdx + 1);
+        transitioning = false;
+        lastTs = performance.now();
+        rafId  = requestAnimationFrame(loop);
+      }, 400);
+    }
+  }
+}
+
+// ══════════════════════════════════════
+// ENEMY UPDATE
+// ══════════════════════════════════════
+function updateEnemy(dt) {
+  if (gameOver || enemy.hp <= 0) return;
+  if (enemy.iframes > 0) enemy.iframes--;
+
+  const dx = player.x - enemy.x, dy = player.y - enemy.y;
+  const dist = Math.hypot(dx, dy);
+
+  enemy.dirTimer -= dt;
+  if (enemy.dirTimer <= 0) {
+    enemy.moveAngle = Math.random() < 0.65
+      ? Math.atan2(dy, dx)
+      : enemy.moveAngle + (Math.random()-0.5)*2.0;
+    enemy.dirTimer = 500 + Math.random()*900;
+  }
+
+  enemy.facing = enemy.moveAngle;
+  slideMove(enemy, Math.cos(enemy.moveAngle)*enemy.speed, Math.sin(enemy.moveAngle)*enemy.speed);
+
+  // Attack (only if this stage shoots)
+  if (enemy.shoots) {
+    enemy.atkTimer -= dt;
+    if (enemy.atkTimer <= 0 && dist < TILE*5.5) {
+      enemy.atkTimer = enemy.atkCd + Math.random()*400;
+      const angle = Math.atan2(dy,dx) + (Math.random()-0.5)*0.3;
+      projectiles.push({
+        x: enemy.x + Math.cos(angle)*(enemy.r+4),
+        y: enemy.y + Math.sin(angle)*(enemy.r+4),
+        vx: Math.cos(angle)*enemy.projSpeed,
+        vy: Math.sin(angle)*enemy.projSpeed,
+        life:1.0, r: enemy.projR,
+        type: enemy.type,
+      });
+      if (enemy.type === 'dragon') log('Dragon breathes fire! 🔥', 'e');
+      else log('Skeleton fires an arrow! 🏹', 'e');
+    }
+  }
+}
+
+// ══════════════════════════════════════
 // PROJECTILES
-// ══════════════════════════════════════════════════
+// ══════════════════════════════════════
 function updateProjectiles() {
-  for (let i = projectiles.length - 1; i >= 0; i--) {
+  for (let i = projectiles.length-1; i >= 0; i--) {
     const p = projectiles[i];
     p.x += p.vx; p.y += p.vy;
     p.life -= 0.006;
 
     if (isWall(p.x, p.y) || p.life <= 0) { projectiles.splice(i,1); continue; }
 
-    if (!gameOver && player.iframes <= 0 && Math.hypot(p.x-player.x, p.y-player.y) < player.r + p.r) {
-      const dmg = 1 + Math.floor(Math.random() * 2);
-      player.hp   -= dmg;
+    if (!gameOver && player.iframes <= 0
+        && Math.hypot(p.x-player.x, p.y-player.y) < player.r + p.r) {
+
+      if (isBlockedByShield(p)) {
+        // BLOCKED
+        spawnText(player.x, player.y - 20, 'BLOCKED! 🛡', '#88ccff');
+        log('Shield blocks the attack! 🛡', 'p');
+        projectiles.splice(i,1);
+        continue;
+      }
+
+      const dmg = 1 + Math.floor(Math.random()*2);
+      const dmgType = p.type === 'dragon' ? 'FIRE' : 'ARROW';
+      const dmgColor = p.type === 'dragon' ? '#ff7744' : '#ddbb44';
+      player.hp -= dmg;
       player.iframes = 55;
-      spawnText(player.x + (Math.random()*12-6), player.y - 20, `-${dmg} FIRE`, '#ff7744');
-      log(`Fire hits you! ${dmg} FIRE damage`, 'e');
+      spawnText(player.x+(Math.random()*12-6), player.y-20, `-${dmg} ${dmgType}`, dmgColor);
+      log(`${dmgType} hits you! ${dmg} ${dmgType} damage`, 'e');
       updateHUD();
       projectiles.splice(i,1);
-      if (player.hp <= 0 && !gameOver) { gameOver = true; setTimeout(death, 350); }
+      if (player.hp <= 0 && !gameOver) {
+        gameOver = true;
+        const killedBy = p.type === 'dragon' ? "dragonfire" : "a skeleton's arrow";
+        document.getElementById('d-msg').textContent = `You were slain by ${killedBy}.`;
+        setTimeout(death, 350);
+      }
       continue;
     }
   }
 }
 
-// ══════════════════════════════════════════════════
-// PLAYER UPDATE
-// ══════════════════════════════════════════════════
-function updatePlayer() {
-  if (gameOver) return;
-  if (player.iframes > 0) player.iframes--;
-
-  let ax = 0, ay = 0;
-  if (keys['ArrowLeft']  || keys['a'] || keys['A']) ax -= 1;
-  if (keys['ArrowRight'] || keys['d'] || keys['D']) ax += 1;
-  if (keys['ArrowUp']    || keys['w'] || keys['W']) ay -= 1;
-  if (keys['ArrowDown']  || keys['s'] || keys['S']) ay += 1;
-
-  const aLen = Math.hypot(analog.x, analog.y);
-  if (aLen > 0.18) { ax = analog.x; ay = analog.y; }
-
-  const len = Math.hypot(ax, ay);
-  if (len > 0.01) {
-    const nx = ax / len, ny = ay / len;
-    slideMove(player, nx * PL_SPEED, ny * PL_SPEED);
-    player.facing = Math.atan2(ny, nx);
-  }
-
-  if (player.swinging) {
-    player.swingT += 0.1;
-    if (player.swingT >= 1) { player.swinging = false; player.swingT = 0; }
+// ══════════════════════════════════════
+// DROPS (shield pickup)
+// ══════════════════════════════════════
+function updateDrops() {
+  for (let i = drops.length-1; i >= 0; i--) {
+    const d = drops[i];
+    d.pulse = (d.pulse + 0.05) % (Math.PI*2);
+    if (Math.hypot(player.x-d.x, player.y-d.y) < player.r + 18) {
+      // Pick up
+      if (d.type === 'shield') {
+        player.hasShield = true;
+        spawnText(player.x, player.y-28, 'SHIELD EQUIPPED! 🛡', '#88ccff');
+        log('You equipped the Dragon Shield! 🛡', 'item');
+        log('Face projectiles to BLOCK them!', 's');
+        updateHUD();
+        drops.splice(i,1);
+        // Open north door
+        setTimeout(openNorthDoor, 500);
+      }
+    }
   }
 }
 
-// ══════════════════════════════════════════════════
-// DRAW
-// ══════════════════════════════════════════════════
-function draw() {
-  ctx.clearRect(0, 0, W, H);
+// ══════════════════════════════════════
+// PLAYER UPDATE
+// ══════════════════════════════════════
+function updatePlayer() {
+  if (gameOver || transitioning) return;
+  if (player.iframes > 0) player.iframes--;
 
-  // Floor tiles
-  for (let r = 0; r < ROWS; r++) {
-    for (let c = 0; c < COLS; c++) {
-      const x = c * TILE, y = r * TILE;
-      if (ROOM[r][c] === 1) {
-        // Stone wall
-        ctx.fillStyle = '#14141f';
-        ctx.fillRect(x, y, TILE, TILE);
-        ctx.fillStyle = '#1c1c2e';
-        ctx.fillRect(x+2, y+2, TILE-4, TILE-4);
-        ctx.fillStyle = '#24243a';
-        ctx.fillRect(x+2, y+2, TILE-4, 4);
-        ctx.fillStyle = '#0a0a14';
-        ctx.fillRect(x+2, y+TILE-6, TILE-4, 4);
+  let ax=0, ay=0;
+  const aLen=Math.hypot(analog.x,analog.y);
+  if (aLen>0.18) {
+    ax=analog.x; ay=analog.y;
+  } else {
+    if (keys['ArrowLeft'] ||keys['a']||keys['A']) ax-=1;
+    if (keys['ArrowRight']||keys['d']||keys['D']) ax+=1;
+    if (keys['ArrowUp']   ||keys['w']||keys['W']) ay-=1;
+    if (keys['ArrowDown'] ||keys['s']||keys['S']) ay+=1;
+  }
+
+  const len=Math.hypot(ax,ay);
+  if (len>0.01) {
+    const nx=ax/len, ny=ay/len;
+    slideMove(player, nx*PL_SPEED, ny*PL_SPEED);
+    player.facing = Math.atan2(ny,nx);
+    checkDoorTransition();
+  }
+
+  if (player.swinging) {
+    player.swingT+=0.1;
+    if (player.swingT>=1){player.swinging=false;player.swingT=0;}
+  }
+}
+
+// ══════════════════════════════════════
+// DRAW HELPERS
+// ══════════════════════════════════════
+function drawRoom() {
+  for (let r=0;r<ROWS;r++) {
+    for (let c=0;c<COLS;c++) {
+      const x=c*TILE, y=r*TILE;
+      if (room[r][c]===1) {
+        ctx.fillStyle='#14141f'; ctx.fillRect(x,y,TILE,TILE);
+        ctx.fillStyle='#1c1c2e'; ctx.fillRect(x+2,y+2,TILE-4,TILE-4);
+        ctx.fillStyle='#24243a'; ctx.fillRect(x+2,y+2,TILE-4,4);
+        ctx.fillStyle='#0a0a14'; ctx.fillRect(x+2,y+TILE-6,TILE-4,4);
       } else {
-        ctx.fillStyle = '#0d0d18';
-        ctx.fillRect(x, y, TILE, TILE);
-        // Subtle stone lines
-        ctx.strokeStyle = '#111122';
-        ctx.lineWidth = 0.5;
-        ctx.strokeRect(x+0.5, y+0.5, TILE-1, TILE-1);
-        // Occasional floor dot
-        if ((r*7+c*3)%5===0) {
-          ctx.fillStyle = '#15152a';
-          ctx.fillRect(x+TILE/2-1, y+TILE/2-1, 2, 2);
-        }
+        ctx.fillStyle='#0d0d18'; ctx.fillRect(x,y,TILE,TILE);
+        ctx.strokeStyle='#111122'; ctx.lineWidth=0.5;
+        ctx.strokeRect(x+0.5,y+0.5,TILE-1,TILE-1);
+        if ((r*7+c*3)%5===0){ctx.fillStyle='#15152a';ctx.fillRect(x+TILE/2-1,y+TILE/2-1,2,2);}
       }
     }
   }
 
-  // Projectiles
-  for (const p of projectiles) {
+  // Draw door opening highlight if open
+  if (room[0][DOOR_COLS[0]]===0) {
+    const dx = DOOR_COLS[0]*TILE, dw = DOOR_COLS.length*TILE;
+    const midX = dx + dw/2;
+    // Dark passage
+    ctx.fillStyle='#050508';
+    ctx.fillRect(dx, 0, dw, TILE);
+    // Animated gold glow on floor edge
+    const t = performance.now() / 1000;
+    const glowAlpha = 0.18 + Math.sin(t * 3) * 0.12;
+    const edgeGlow = ctx.createLinearGradient(dx, TILE, dx, 0);
+    edgeGlow.addColorStop(0, `rgba(245,197,24,${glowAlpha})`);
+    edgeGlow.addColorStop(1, 'transparent');
+    ctx.fillStyle = edgeGlow;
+    ctx.fillRect(dx, 0, dw, TILE);
+    // Blinking arrows — three stacked, offset phase
+    ctx.textAlign = 'center';
+    for (let i = 0; i < 3; i++) {
+      const phase = (t * 2.5 - i * 0.35) % 1.0; // 0..1 scrolling
+      const alpha = Math.max(0, Math.sin(phase * Math.PI));
+      const yOff  = TILE * 0.75 - i * 9;
+      ctx.globalAlpha = alpha * 0.9;
+      ctx.fillStyle = '#f5c518';
+      ctx.shadowColor = '#f5c518';
+      ctx.shadowBlur  = 8;
+      ctx.font = 'bold 13px monospace';
+      ctx.fillText('▲', midX, yOff);
+    }
+    ctx.globalAlpha = 1;
+    ctx.shadowBlur  = 0;
+    ctx.textAlign = 'left';
+  }
+}
+
+function drawDrops() {
+  for (const d of drops) {
+    const pulse = Math.sin(d.pulse);
+    const scale = 1 + pulse * 0.14;
+    const t     = performance.now() / 1000;
+
+    // Outer ring ping — expands and fades
+    const pingR     = 22 + ((t * 1.4) % 1) * 18;
+    const pingAlpha = 1 - ((t * 1.4) % 1);
+    ctx.strokeStyle = `rgba(80,160,255,${pingAlpha * 0.7})`;
+    ctx.lineWidth   = 2;
+    ctx.beginPath(); ctx.arc(d.x, d.y, pingR, 0, Math.PI*2); ctx.stroke();
+
+    // Bright glow
+    const glow = ctx.createRadialGradient(d.x,d.y,0,d.x,d.y,36);
+    glow.addColorStop(0, 'rgba(80,160,255,0.55)');
+    glow.addColorStop(0.5,'rgba(40,100,220,0.25)');
+    glow.addColorStop(1, 'transparent');
+    ctx.fillStyle = glow;
+    ctx.beginPath(); ctx.arc(d.x, d.y, 36, 0, Math.PI*2); ctx.fill();
+
+    // "SHIELD" label above
     ctx.save();
-    ctx.globalAlpha = p.life;
-    const g = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*2.8);
-    g.addColorStop(0,'#ffcc44');
-    g.addColorStop(0.3,'#ff6600');
-    g.addColorStop(1,'transparent');
-    ctx.fillStyle = g;
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r*2.8, 0, Math.PI*2);
-    ctx.fill();
-    ctx.fillStyle = '#fff8cc';
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r*0.4, 0, Math.PI*2);
-    ctx.fill();
+    ctx.font = 'bold 7px "Press Start 2P", monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = '#88ccff';
+    ctx.shadowColor = '#4488ff';
+    ctx.shadowBlur  = 8;
+    ctx.globalAlpha = 0.7 + pulse * 0.3;
+    ctx.fillText('SHIELD', d.x, d.y - 28);
+    ctx.restore();
+
+    // Icon — bigger and brighter
+    ctx.save();
+    ctx.translate(d.x, d.y);
+    ctx.scale(scale, scale);
+    ctx.shadowColor = '#88ccff';
+    ctx.shadowBlur  = 18;
+    ctx.font = '30px serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('🛡', 0, 0);
     ctx.restore();
   }
+}
 
-  // ── PLAYER ──
-  const px = player.x, py = player.y;
-  const flash = player.iframes > 0 && Math.floor(player.iframes/4)%2===0;
+function drawProjectile(p) {
+  ctx.save();
+  ctx.globalAlpha = p.life;
+  if (p.type==='dragon') {
+    const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*2.8);
+    g.addColorStop(0,'#ffcc44'); g.addColorStop(0.3,'#ff6600'); g.addColorStop(1,'transparent');
+    ctx.fillStyle=g;
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.r*2.8,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle='#fff8cc';
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.r*0.4,0,Math.PI*2); ctx.fill();
+  } else {
+    // Arrow — draw as a line
+    const angle = Math.atan2(p.vy,p.vx);
+    const len=14;
+    ctx.strokeStyle='#ddbb44'; ctx.lineWidth=3; ctx.lineCap='round';
+    ctx.shadowColor='#ddbb44'; ctx.shadowBlur=6;
+    ctx.beginPath();
+    ctx.moveTo(p.x-Math.cos(angle)*len, p.y-Math.sin(angle)*len);
+    ctx.lineTo(p.x+Math.cos(angle)*len, p.y+Math.sin(angle)*len);
+    ctx.stroke();
+    // tip
+    ctx.fillStyle='#ffeeaa';
+    ctx.beginPath(); ctx.arc(p.x+Math.cos(angle)*len, p.y+Math.sin(angle)*len,3,0,Math.PI*2); ctx.fill();
+  }
+  ctx.restore();
+}
+
+function drawPlayer() {
+  const px=player.x, py=player.y;
+  const flash=player.iframes>0&&Math.floor(player.iframes/4)%2===0;
   if (!flash) {
     // Shadow
-    ctx.fillStyle = 'rgba(0,0,0,0.28)';
-    ctx.beginPath();
-    ctx.ellipse(px, py + player.r - 3, player.r*0.65, 4, 0, 0, Math.PI*2);
-    ctx.fill();
-    // Body ring
-    ctx.fillStyle = '#2244aa';
-    ctx.beginPath(); ctx.arc(px, py, player.r, 0, Math.PI*2); ctx.fill();
-    // Tunic
-    ctx.fillStyle = '#44aa44';
-    ctx.beginPath(); ctx.arc(px, py, player.r - 3, 0, Math.PI*2); ctx.fill();
-    // Face direction indicator
-    const fdx = Math.cos(player.facing)*(player.r-5), fdy = Math.sin(player.facing)*(player.r-5);
-    ctx.fillStyle = '#eeeeff';
-    ctx.beginPath(); ctx.arc(px+fdx, py+fdy, 3.5, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle='rgba(0,0,0,0.28)';
+    ctx.beginPath(); ctx.ellipse(px,py+player.r-3,player.r*.65,4,0,0,Math.PI*2); ctx.fill();
+    // Body
+    ctx.fillStyle='#2244aa';
+    ctx.beginPath(); ctx.arc(px,py,player.r,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle='#44aa44';
+    ctx.beginPath(); ctx.arc(px,py,player.r-3,0,Math.PI*2); ctx.fill();
+    // Face dot
+    const fdx=Math.cos(player.facing)*(player.r-5), fdy=Math.sin(player.facing)*(player.r-5);
+    ctx.fillStyle='#eeeeff';
+    ctx.beginPath(); ctx.arc(px+fdx,py+fdy,3.5,0,Math.PI*2); ctx.fill();
+
+    // Shield if equipped — half-circle facing player direction
+    if (player.hasShield) {
+      const sa = player.facing;
+      const sx = px+Math.cos(sa)*(player.r-2), sy = py+Math.sin(sa)*(player.r-2);
+      ctx.save();
+      ctx.translate(sx, sy);
+      // flat side toward player, dome facing outward; rotate 90deg so dome points in facing dir
+      ctx.rotate(sa - Math.PI/2);
+      ctx.fillStyle='#2255dd';
+      ctx.beginPath();
+      ctx.arc(0, 0, 11, 0, Math.PI, false);
+      ctx.closePath();
+      ctx.fill();
+      ctx.strokeStyle='#99bbff'; ctx.lineWidth=1.5;
+      ctx.stroke();
+      ctx.strokeStyle='#aaccff66'; ctx.lineWidth=1;
+      ctx.beginPath();
+      ctx.arc(0, 0, 7, 0.15, Math.PI-0.15, false);
+      ctx.stroke();
+      ctx.restore();
+    }
   }
 
-  // Sword
+  // Sword swing
   if (player.swinging) {
-    const swingOffset = (player.swingT - 0.5) * 1.6; // -0.8 to +0.8 radian arc
-    const angle = player.facing + swingOffset;
-    const bx = px + Math.cos(angle) * (player.r + 2);
-    const by = py + Math.sin(angle) * (player.r + 2);
-    const tx = px + Math.cos(angle) * (player.r + SWORD_LEN);
-    const ty = py + Math.sin(angle) * (player.r + SWORD_LEN);
-
+    const swingOffset=(player.swingT-0.5)*1.6;
+    const angle=player.facing+swingOffset;
+    const bx=px+Math.cos(angle)*(player.r+2), by=py+Math.sin(angle)*(player.r+2);
+    const tx=px+Math.cos(angle)*(player.r+SWORD_LEN), ty=py+Math.sin(angle)*(player.r+SWORD_LEN);
     ctx.save();
-    ctx.shadowColor = '#f5c518';
-    ctx.shadowBlur  = 12;
-    ctx.strokeStyle = '#f5c518';
-    ctx.lineWidth   = 5;
-    ctx.lineCap     = 'round';
+    ctx.shadowColor='#f5c518'; ctx.shadowBlur=12;
+    ctx.strokeStyle='#f5c518'; ctx.lineWidth=5; ctx.lineCap='round';
     ctx.beginPath(); ctx.moveTo(bx,by); ctx.lineTo(tx,ty); ctx.stroke();
-    // Tip sparkle
-    ctx.fillStyle = '#fffde0';
-    ctx.shadowBlur = 6;
-    ctx.beginPath(); ctx.arc(tx, ty, 3.5, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle='#fffde0'; ctx.shadowBlur=6;
+    ctx.beginPath(); ctx.arc(tx,ty,3.5,0,Math.PI*2); ctx.fill();
     ctx.restore();
   } else {
-    // Idle sword hint
-    const ra = player.facing - 0.25;
-    ctx.strokeStyle = '#f5c51866';
-    ctx.lineWidth = 2.5;
-    ctx.lineCap = 'round';
+    const ra=player.facing-0.25;
+    ctx.strokeStyle='#f5c51866'; ctx.lineWidth=2.5; ctx.lineCap='round';
     ctx.beginPath();
     ctx.moveTo(px+Math.cos(ra)*player.r, py+Math.sin(ra)*player.r);
     ctx.lineTo(px+Math.cos(ra)*(player.r+14), py+Math.sin(ra)*(player.r+14));
     ctx.stroke();
   }
+}
 
-  // ── ENEMY DRAGON ──
-  const ex = enemy.x, ey = enemy.y;
-  const eFlash = enemy.iframes > 0 && Math.floor(enemy.iframes/3)%2===0;
+function drawEnemy() {
+  if (enemy.hp <= 0) return;
+  const ex=enemy.x, ey=enemy.y;
+  const eFlash=enemy.iframes>0&&Math.floor(enemy.iframes/3)%2===0;
 
-  // Glow
-  const dg = ctx.createRadialGradient(ex,ey,0,ex,ey,enemy.r*2.5);
-  dg.addColorStop(0,'#cc220022');
-  dg.addColorStop(1,'transparent');
-  ctx.fillStyle = dg;
-  ctx.beginPath(); ctx.arc(ex, ey, enemy.r*2.5, 0, Math.PI*2); ctx.fill();
+  const dg=ctx.createRadialGradient(ex,ey,0,ex,ey,enemy.r*2.5);
+  dg.addColorStop(0,enemy.glowColor); dg.addColorStop(1,'transparent');
+  ctx.fillStyle=dg;
+  ctx.beginPath(); ctx.arc(ex,ey,enemy.r*2.5,0,Math.PI*2); ctx.fill();
 
-  // Shadow
-  ctx.fillStyle = 'rgba(0,0,0,0.3)';
-  ctx.beginPath();
-  ctx.ellipse(ex, ey + enemy.r - 4, enemy.r*0.7, 5, 0, 0, Math.PI*2);
-  ctx.fill();
+  ctx.fillStyle='rgba(0,0,0,0.3)';
+  ctx.beginPath(); ctx.ellipse(ex,ey+enemy.r-4,enemy.r*.7,5,0,0,Math.PI*2); ctx.fill();
 
   if (!eFlash) {
-    // Body
-    ctx.fillStyle = '#771100';
-    ctx.beginPath(); ctx.arc(ex, ey, enemy.r, 0, Math.PI*2); ctx.fill();
-    ctx.fillStyle = '#aa2200';
-    ctx.beginPath(); ctx.arc(ex, ey, enemy.r - 4, 0, Math.PI*2); ctx.fill();
-    // Scales hint
-    ctx.strokeStyle = '#882200';
-    ctx.lineWidth = 1.5;
-    ctx.beginPath(); ctx.arc(ex, ey, enemy.r - 8, 0, Math.PI*2); ctx.stroke();
+    ctx.fillStyle=enemy.color1;
+    ctx.beginPath(); ctx.arc(ex,ey,enemy.r,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle=enemy.color2;
+    ctx.beginPath(); ctx.arc(ex,ey,enemy.r-4,0,Math.PI*2); ctx.fill();
+
+    if (enemy.type==='dragon') {
+      ctx.strokeStyle='#882200'; ctx.lineWidth=1.5;
+      ctx.beginPath(); ctx.arc(ex,ey,enemy.r-8,0,Math.PI*2); ctx.stroke();
+    } else {
+      // Skeleton: draw simplified skull lines
+      ctx.strokeStyle='#999988'; ctx.lineWidth=1;
+      ctx.beginPath(); ctx.arc(ex,ey,enemy.r-7,0,Math.PI*2); ctx.stroke();
+      // teeth line
+      ctx.strokeStyle='#888877'; ctx.lineWidth=1;
+      ctx.beginPath(); ctx.moveTo(ex-6,ey+4); ctx.lineTo(ex+6,ey+4); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(ex-2,ey+4); ctx.lineTo(ex-2,ey+8); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(ex+2,ey+4); ctx.lineTo(ex+2,ey+8); ctx.stroke();
+    }
 
     // Eyes
-    const eA = [enemy.facing - 0.55, enemy.facing + 0.55];
-    for (const a of eA) {
-      const ex2 = ex + Math.cos(a)*(enemy.r-9), ey2 = ey + Math.sin(a)*(enemy.r-9);
-      ctx.fillStyle = '#ffee00';
-      ctx.beginPath(); ctx.arc(ex2, ey2, 4.5, 0, Math.PI*2); ctx.fill();
-      ctx.fillStyle = '#220000';
-      ctx.beginPath(); ctx.arc(ex2+0.5, ey2+0.5, 2.5, 0, Math.PI*2); ctx.fill();
+    const eAngles=[enemy.facing-0.55,enemy.facing+0.55];
+    for (const a of eAngles) {
+      const ex2=ex+Math.cos(a)*(enemy.r-9), ey2=ey+Math.sin(a)*(enemy.r-9);
+      ctx.fillStyle=enemy.eyeColor;
+      ctx.beginPath(); ctx.arc(ex2,ey2,4.5,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle=enemy.eyePupil;
+      ctx.beginPath(); ctx.arc(ex2+0.5,ey2+0.5,2.5,0,Math.PI*2); ctx.fill();
     }
   }
+}
 
-  // ── FLOAT TEXTS ──
+function drawFloatTexts() {
   ctx.save();
-  ctx.font = 'bold 10px "Press Start 2P", monospace';
-  ctx.textAlign = 'center';
+  ctx.font='bold 10px "Press Start 2P",monospace';
+  ctx.textAlign='center';
   for (const ft of floatTexts) {
-    ctx.globalAlpha = ft.life;
-    ctx.fillStyle   = ft.color;
-    ctx.shadowColor = ft.color;
-    ctx.shadowBlur  = 8;
-    ctx.fillText(ft.text, ft.x, ft.y);
+    ctx.globalAlpha=ft.life;
+    ctx.fillStyle=ft.color; ctx.shadowColor=ft.color; ctx.shadowBlur=8;
+    ctx.fillText(ft.text,ft.x,ft.y);
   }
   ctx.restore();
 }
 
-// ══════════════════════════════════════════════════
+function draw() {
+  ctx.clearRect(0,0,W,H);
+  drawRoom();
+  drawDrops();
+  for (const p of projectiles) drawProjectile(p);
+  drawPlayer();
+  drawEnemy();
+  drawFloatTexts();
+}
+
+// ══════════════════════════════════════
 // GAME LOOP
-// ══════════════════════════════════════════════════
-let lastTs = 0;
+// ══════════════════════════════════════
+let lastTs=0;
 function loop(ts) {
-  const dt = ts - lastTs; lastTs = ts;
+  const dt=ts-lastTs; lastTs=ts;
   updatePlayer();
   updateEnemy(dt);
   updateProjectiles();
-  // Float text update
-  for (let i = floatTexts.length-1; i >= 0; i--) {
-    floatTexts[i].y -= 1.1;
-    floatTexts[i].life -= 0.02;
-    if (floatTexts[i].life <= 0) floatTexts.splice(i,1);
+  updateDrops();
+  for (let i=floatTexts.length-1;i>=0;i--) {
+    floatTexts[i].y-=1.1; floatTexts[i].life-=0.02;
+    if (floatTexts[i].life<=0) floatTexts.splice(i,1);
   }
   draw();
-  rafId = requestAnimationFrame(loop);
+  // Keep looping only while alive — stops when gameOver is set
+  if (!gameOver) {
+    rafId=requestAnimationFrame(loop);
+  }
 }
 
-function startGame() {
-  showScreen('screen-game');
-  initGame();
-  updateHUD();
-  if (rafId) cancelAnimationFrame(rafId);
-  lastTs = performance.now();
-  rafId  = requestAnimationFrame(loop);
+function stopLoop() {
+  if (rafId) { cancelAnimationFrame(rafId); rafId=null; }
 }
 
-function victory() {
-  document.getElementById('v-msg').innerHTML =
-    `Dragon slain!<br>HP remaining: ${Math.max(0,player.hp)} / ${PL_HP_MAX}`;
-  showScreen('screen-victory');
-}
-function death() { showScreen('screen-death'); }
+function victory() { stopLoop(); showScreen('screen-victory'); }
+function death()   { stopLoop(); showScreen('screen-death'); }
 
-// ══════════════════════════════════════════════════
+// ══════════════════════════════════════
 // KEYBOARD
-// ══════════════════════════════════════════════════
+// ══════════════════════════════════════
 document.addEventListener('keydown', e => {
-  keys[e.key] = true;
-  if (e.key===' '||e.key==='z'||e.key==='Z') { e.preventDefault(); doAttack(); }
+  keys[e.key]=true;
+  if (e.key===' '||e.key==='z'||e.key==='Z'){e.preventDefault();doAttack();}
   if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)) e.preventDefault();
 });
-document.addEventListener('keyup', e => { keys[e.key]=false; });
+document.addEventListener('keyup', e=>{keys[e.key]=false;});
 
-// ══════════════════════════════════════════════════
+// ══════════════════════════════════════
 // ANALOG STICK
-// ══════════════════════════════════════════════════
-const stickZone = document.getElementById('stickZone');
-const stickKnob = document.getElementById('stickKnob');
-const STICK_R   = 33;
-let   stickTouchId = null;
+// ══════════════════════════════════════
+const stickZone=document.getElementById('stickZone');
+const stickKnob=document.getElementById('stickKnob');
+const STICK_R=33;
+let stickTouchId=null;
 
-function moveStick(cx, cy) {
-  const rect = stickZone.getBoundingClientRect();
-  const ox = rect.left + rect.width/2, oy = rect.top + rect.height/2;
-  const dx = cx - ox, dy = cy - oy;
-  const dist = Math.hypot(dx, dy);
-  const clamped = Math.min(dist, STICK_R);
-  const angle   = Math.atan2(dy, dx);
-  const kx = Math.cos(angle) * clamped;
-  const ky = Math.sin(angle) * clamped;
-  stickKnob.style.transform = `translate(calc(-50% + ${kx}px), calc(-50% + ${ky}px))`;
-  const norm = Math.max(dist, 1);
-  analog.x = (dx / norm) * Math.min(1, dist / STICK_R);
-  analog.y = (dy / norm) * Math.min(1, dist / STICK_R);
+function moveStick(cx,cy) {
+  const rect=stickZone.getBoundingClientRect();
+  const ox=rect.left+rect.width/2, oy=rect.top+rect.height/2;
+  const dx=cx-ox, dy=cy-oy, dist=Math.hypot(dx,dy);
+  const clamped=Math.min(dist,STICK_R), angle=Math.atan2(dy,dx);
+  stickKnob.style.transform=`translate(calc(-50% + ${Math.cos(angle)*clamped}px), calc(-50% + ${Math.sin(angle)*clamped}px))`;
+  analog.x=(dx/Math.max(dist,1))*Math.min(1,dist/STICK_R);
+  analog.y=(dy/Math.max(dist,1))*Math.min(1,dist/STICK_R);
 }
+function resetStick(){stickKnob.style.transform='translate(-50%,-50%)';analog={x:0,y:0};stickTouchId=null;}
 
-function resetStick() {
-  stickKnob.style.transform = 'translate(-50%,-50%)';
-  analog = { x:0, y:0 };
-  stickTouchId = null;
-}
+stickZone.addEventListener('touchstart',e=>{e.preventDefault();const t=e.changedTouches[0];stickTouchId=t.identifier;moveStick(t.clientX,t.clientY);},{passive:false});
+document.addEventListener('touchmove',e=>{if(stickTouchId===null)return;e.preventDefault();for(const t of e.changedTouches)if(t.identifier===stickTouchId){moveStick(t.clientX,t.clientY);break;}},{passive:false});
+document.addEventListener('touchend',e=>{for(const t of e.changedTouches)if(t.identifier===stickTouchId){resetStick();break;}});
+document.addEventListener('touchcancel',e=>{for(const t of e.changedTouches)if(t.identifier===stickTouchId){resetStick();break;}});
 
-stickZone.addEventListener('touchstart', e => {
-  e.preventDefault();
-  const t = e.changedTouches[0];
-  stickTouchId = t.identifier;
-  moveStick(t.clientX, t.clientY);
-}, {passive:false});
-
-document.addEventListener('touchmove', e => {
-  if (stickTouchId === null) return;
-  e.preventDefault();
-  for (const t of e.changedTouches) {
-    if (t.identifier === stickTouchId) { moveStick(t.clientX, t.clientY); break; }
-  }
-}, {passive:false});
-
-document.addEventListener('touchend', e => {
-  for (const t of e.changedTouches) {
-    if (t.identifier === stickTouchId) { resetStick(); break; }
-  }
-});
-document.addEventListener('touchcancel', e => {
-  for (const t of e.changedTouches) {
-    if (t.identifier === stickTouchId) { resetStick(); break; }
-  }
-});
-
-// ══════════════════════════════════════════════════
+// ══════════════════════════════════════
 // ATTACK BUTTON
-// ══════════════════════════════════════════════════
-const atkBtn = document.getElementById('attackBtn');
-atkBtn.addEventListener('touchstart', e => { e.preventDefault(); doAttack(); atkBtn.classList.add('pressed'); }, {passive:false});
-atkBtn.addEventListener('touchend',   e => { e.preventDefault(); atkBtn.classList.remove('pressed'); }, {passive:false});
-atkBtn.addEventListener('mousedown',  () => { doAttack(); atkBtn.classList.add('pressed'); });
-document.addEventListener('mouseup',  () => atkBtn.classList.remove('pressed'));
+// ══════════════════════════════════════
+const atkBtn=document.getElementById('attackBtn');
+atkBtn.addEventListener('touchstart',e=>{e.preventDefault();doAttack();atkBtn.classList.add('pressed');},{passive:false});
+atkBtn.addEventListener('touchend',e=>{e.preventDefault();atkBtn.classList.remove('pressed');},{passive:false});
+atkBtn.addEventListener('mousedown',()=>{doAttack();atkBtn.classList.add('pressed');});
+document.addEventListener('mouseup',()=>atkBtn.classList.remove('pressed'));
 </script>
 </body>
 </html>
